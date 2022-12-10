@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Terrain.tscn" type="PackedScene" id=3]
+[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 100, 0.5, 100 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 50, 0.25, 50 )
+
+[node name="Game" type="Spatial"]
+
+[node name="Ground" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154972, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+shape = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6258, 2.54271, 0 )
+script = ExtResource( 2 )
+
+[node name="Pivot" type="Position3D" parent="Player"]
+
+[node name="Camera" type="Camera" parent="Player/Pivot"]
+transform = Transform( -1, 1.51808e-08, -8.60946e-08, 0, 0.984808, 0.173648, 8.74228e-08, 0.173648, -0.984808, 0, 5, -8 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="lowpoly_scene" parent="." instance=ExtResource( 3 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 2.036, 0.547703, 25.1027 )
+
+[node name="NPC" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.996809, 0.0544415, -0.0583822, 0.0504361, 0.996409, 0.0680157, 0.0618754, 0.0648541, -0.995975, 8.4467, 0.558323, 5.08412 )
+
+[node name="UI" type="CanvasLayer" parent="NPC"]
+
+[node name="Bacxkground" type="ColorRect" parent="NPC/UI"]
+anchor_right = 1.0
+margin_bottom = 30.0
+color = Color( 0, 0, 0, 0.501961 )
+
+[node name="Score" type="Label" parent="NPC/UI"]
+margin_left = 19.0
+margin_top = 1.0
+margin_right = 519.0
+margin_bottom = 31.0
+text = "Score: "
+valign = 1
+
+[node name="Timer" type="Label" parent="NPC/UI"]
+margin_left = 401.0
+margin_top = 7.0
+margin_right = 901.0
+margin_bottom = 38.0
+text = "Timer: 00:00
+"
+align = 2
+valign = 1
+
+[node name="Dialoge" type="Control" parent="NPC/UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="NPC/UI/Dialoge"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -30.0
+color = Color( 0, 0, 0, 0.470588 )

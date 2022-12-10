@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Assets/skin.material" type="Material" id=1]
 [ext_resource path="res://Assets/skaterFemaleA.png" type="Texture" id=2]
+[ext_resource path="res://Assets/blasterJ.glb" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -4637,7 +4638,7 @@ animation = "Idle"
 animation = "Run"
 
 [sub_resource type="AnimationNodeBlendTree" id=22]
-graph_offset = Vector2( -151.35, 65.4075 )
+graph_offset = Vector2( 0, 65.5 )
 nodes/Idle/node = SubResource( 19 )
 nodes/Idle/position = Vector2( 130, 70 )
 nodes/Idle_Run/node = SubResource( 20 )
@@ -4886,6 +4887,13 @@ bones/44/bound_children = [  ]
 mesh = SubResource( 2 )
 skin = SubResource( 3 )
 material/0 = SubResource( 4 )
+
+[node name="BoneAttachment" type="BoneAttachment" parent="Root/Skeleton"]
+transform = Transform( -0.856871, 0.113234, 0.502952, 0.408898, -0.444887, 0.796796, 0.313979, 0.888398, 0.334909, -0.656984, 1.30789, 0.278599 )
+bone_name = "right_hand_thumb_1"
+
+[node name="blasterJ2" parent="Root/Skeleton/BoneAttachment" instance=ExtResource( 3 )]
+transform = Transform( -0.766355, 1.28088, 0.148537, 0.433717, 0.0933347, 1.43289, 1.21433, 0.775017, -0.418036, 0.0868889, 0.454924, -0.00630265 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 5 )
