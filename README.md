@@ -1,6 +1,6 @@
 # Project 06 3D RPG
 
-A open world game with an animated character 
+A open world game with an animated character. I was wrapping up the game and got errors with movement and got frustated over it. 
 
 ## Implementation
 
